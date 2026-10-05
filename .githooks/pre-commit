@@ -1,0 +1,5 @@
+#!/bin/sh
+# core.hooksPath=.githooks hides .git/hooks. Keep a pre-commit framework hook working.
+legacy="$(git rev-parse --git-common-dir)/hooks/pre-commit"
+[ -x "$legacy" ] && exec "$legacy" "$@"
+exit 0

@@ -1,0 +1,12 @@
+# gitleaks config for this fork (auto-loaded by `gitleaks git .`).
+# Default rules, plus an allowlist for XRPL spec JSON examples: public keys and
+# ledger object ids are hex strings that trip generic-api-key but are not secrets.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "XRPL public keys and ledger object ids in spec examples"
+regexTarget = "match"
+regexes = [
+  '''^"?(SigningPubKey|MPTokenIssuanceID|NFTokenID|URITokenID|PreviousTokenPage|PreviousTokenNext|MPTokenHolder|mptoken_index)"?\s*[:=]''',
+]
